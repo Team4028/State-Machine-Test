@@ -6,12 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.forwardCom;
-import frc.robot.commands.reverseCom;
-import frc.robot.commands.stateCom;
-import frc.robot.commands.stopCom;
-import frc.robot.subsystems.Statemachine;
-import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.climbCom;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -20,13 +15,15 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
+
 public class RobotContainer {
   private XboxController _controller = new XboxController(0);
   public JoystickButton _A = new JoystickButton(_controller, XboxController.Button.valueOf("kA").value);
   public JoystickButton _B = new JoystickButton(_controller, XboxController.Button.valueOf("kB").value);
   public JoystickButton _X = new JoystickButton(_controller, XboxController.Button.valueOf("kX").value);
   public JoystickButton _Y = new JoystickButton(_controller, XboxController.Button.valueOf("kY").value);
-  private stateCom _comS = new stateCom();
+  public JoystickButton _Back = new JoystickButton(_controller, XboxController.Button.valueOf("kBack").value);
+  private climbCom _comC = new climbCom();
   // The robot's subsystems and commands are defined here...
   //private final dateTime m_exampleSubsystem = new dateTime();
 
@@ -44,10 +41,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-    _A.whenPressed(new forwardCom());
-    _B.whenPressed(new reverseCom());
-    _X.whenPressed(new stopCom());
+  public void configureButtonBindings() {
+   // _A.whenPressed(new forwardCom());
+   // _B.whenPressed(new reverseCom());
+   // _X.whenPressed(new stopCom());
+   _Back.toggleWhenPressed(new climbCom());
+
   }
 
   /**

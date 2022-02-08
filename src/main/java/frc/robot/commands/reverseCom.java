@@ -8,12 +8,13 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.climber;
 
 public class reverseCom extends CommandBase {
-  CANSparkMax _m;
+  climber _m;
   /** Creates a new reverseCom. */
   public reverseCom() {
-    _m = new CANSparkMax(3, MotorType.kBrushless);
+    _m = climber.get_instance();
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

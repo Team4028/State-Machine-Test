@@ -10,13 +10,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class intake extends SubsystemBase {
+public class climber extends SubsystemBase {
   /** Creates a new motor. */
   CANSparkMax _m;
   DigitalInput _button;
-  private static intake _instance = new intake();
-  public intake() {
-    _m = new CANSparkMax(3, MotorType.kBrushless);
+  private static climber _instance = new climber();
+  public climber() {
+    _m = new CANSparkMax(1, MotorType.kBrushless);
     _button = new DigitalInput(0);
   }
   public void set(double vbus){
@@ -25,7 +25,7 @@ public class intake extends SubsystemBase {
   public boolean isClosed(){
     return _button.get();
   }
-   public static intake get_instance() {
+   public static climber get_instance() {
       return _instance;
    }
     

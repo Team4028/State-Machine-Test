@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Statemachine;
+import frc.robot.subsystems.climb;
 import frc.robot.subsystems.dateTime;
 
 /**
@@ -20,7 +20,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  private Statemachine m_Statemachine;
+  private climb m_climb;
   private dateTime m_dateTime;
 
   /**
@@ -63,8 +63,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //m_dateTime = dateTime.get_instance();
-    m_Statemachine = Statemachine.get_instance();
-    m_Statemachine.main();
+    //m_climb = climb.get_instance();
+    //m_climb.main();
   }
 
   /** This function is called periodically during autonomous. */
@@ -86,7 +86,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    m_robotContainer.configureButtonBindings();
+  }
 
   @Override
   public void testInit() {

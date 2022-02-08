@@ -4,26 +4,16 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.climb;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.subsystems.climb;
 
-/** An example command that uses an example subsystem. */
-public class stateCom extends CommandBase {
-  private static frc.robot.subsystems.climb _sub = climb.get_instance();
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
-  public void Statemachine(climb subsystem) {
-    addRequirements(_sub);
+public class climbCom extends CommandBase {
+  private climb _sub;
+  /** Creates a new climbCom. */
+  public climbCom() {
+    _sub = new climb();
+    climb.get_instance();
     // Use addRequirements() here to declare subsystem dependencies.
-
-  }
-
-  private void addRequirements(frc.robot.subsystems.climb _sub2) {
   }
 
   // Called when the command is initially scheduled.
@@ -44,8 +34,5 @@ public class stateCom extends CommandBase {
   @Override
   public boolean isFinished() {
     return false;
-  }
-  private static Subsystem[] Statemachine() {
-    return null;
   }
 }
